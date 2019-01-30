@@ -29,8 +29,16 @@ type MenuQueryResp struct {
 	}
 	ConditionalMenu []struct {
 		Button    []MenuButton `json:"button"`
-		MatchRule MatchRule    `json:"matchrule"`
-		MenuId    int          `json:"menuid"`
+		MatchRule struct {
+			GroupId            string `json:"group_id"`
+			Sex                string `json:"sex"`
+			ClientPlatformType string `json:"client_platform_type"`
+			Country            string `json:"country"`
+			Province           string `json:"province"`
+			City               string `json:"city"`
+			Language           string `json:"language"`
+		} `json:"matchrule"`
+		MenuId int `json:"menuid"`
 	} `json:"conditionalmenu"`
 }
 
