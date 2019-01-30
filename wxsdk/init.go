@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// WeChat 微信结构体
 type WeChat struct {
 	net         *net
 	accessToken string
@@ -14,6 +15,7 @@ type WeChat struct {
 	config      WxConfig
 }
 
+// New 初始化WeChat对象，请确保该对象全局唯一
 func New(config WxConfig) *WeChat {
 	return &WeChat{
 		net:    newNet(),
@@ -21,15 +23,18 @@ func New(config WxConfig) *WeChat {
 	}
 }
 
+// SetClient 设置http client
 func (w *WeChat) SetClient(client *http.Client) *WeChat {
 	w.net = newWithClient(client)
 	return w
 }
 
+// GetClient 获取http client
 func (w *WeChat) GetClient() *http.Client {
 	return w.net.getClient()
 }
 
+// GetAccessToken 获取access_token 一般无需自己获取，系统将自动获取并缓存
 func (w *WeChat) GetAccessToken() (string, error) {
 	if len(w.accessToken) > 0 && time.Now().Before(w.expiresIn) {
 		return w.accessToken, nil
@@ -52,6 +57,7 @@ func (w *WeChat) GetAccessToken() (string, error) {
 	return result.AccessToken, nil
 }
 
+// GetWeChatIpList 获取微信服务器IP地址
 func (w *WeChat) GetWeChatIpList() ([]string, error) {
 	accessToken, err := w.GetAccessToken()
 	if err != nil {
@@ -74,6 +80,7 @@ func (w *WeChat) GetWeChatIpList() ([]string, error) {
 	return result.IpList, nil
 }
 
+// CheckNetwork 网络检测
 func (w *WeChat) CheckNetwork(action, checker string) (*CheckNetworkResp, error) {
 	accessToken, err := w.GetAccessToken()
 	if err != nil {
