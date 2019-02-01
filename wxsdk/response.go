@@ -75,3 +75,13 @@ type SelfMenuResp struct {
 		} `json:"button"`
 	} `json:"selfmenu_info"`
 }
+
+// ListKFAccountResp 列出所有客服账号返回
+type ListKFAccountResp struct {
+	KFList []struct {
+		KFAccount    string `json:"kf_account"`
+		KFNick       string `json:"kf_nick"`
+		KFId         int    `json:"kf_id"`
+		KFHeadImgUrl string `json:"kf_headimgurl"`
+	} `json:"kf_list"`
+}

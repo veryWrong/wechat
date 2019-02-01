@@ -3,6 +3,7 @@ package wxsdk
 import (
 	"errors"
 	"fmt"
+	"log"
 )
 
 // AddKFAccount 添加客服帐号
@@ -84,4 +85,20 @@ func (w *WeChat) DeleteKFAccount(account, nickname, password string) error {
 		return errors.New(result.ErrMsg)
 	}
 	return nil
+}
+
+// ListKFAccount 列出所有客服账号
+func (w *WeChat) ListKFAccount() (*ListKFAccountResp, error) {
+	accessToken, err := w.GetAccessToken()
+	if err != nil {
+		return nil, err
+	}
+	url := fmt.Sprintf(listKFAccount, accessToken)
+	result := &ListKFAccountResp{}
+	_, err = w.net.get(url).end(nil, result)
+	log.Println(err)
+	if err != nil {
+		return nil, HttpRequestErr
+	}
+	return result, nil
 }

@@ -27,4 +27,8 @@ const (
 	updateKFAccount = "https://api.weixin.qq.com/customservice/kfaccount/update?access_token=%s"
 	// 删除客服帐号
 	deleteKFAccount = "https://api.weixin.qq.com/customservice/kfaccount/del?access_token=%s"
+	// 列出所有客服账号
+	listKFAccount = "https://api.weixin.qq.com/cgi-bin/customservice/getkflist?access_token=%s"
+	// 发送消息
+	sendMessage = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=%s"
 )

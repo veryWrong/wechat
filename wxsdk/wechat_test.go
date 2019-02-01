@@ -140,7 +140,21 @@ func TestWeChat_ConditionalMenuMatch(t *testing.T) {
 }
 
 func TestWeChat_AddKFAccount(t *testing.T) {
-	if err := wechat.AddKFAccount("test1@test", "客服1", "pswmd5"); err != nil {
+	if err := wechat.AddKFAccount("wuyulunbi6-24@gh_7ec7613ba186", "客服1", "pswmd5"); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestWeChat_ListKFAccount(t *testing.T) {
+	if list, err := wechat.ListKFAccount(); err != nil {
+		t.Fatal(err)
+	} else {
+		t.Log(list)
+	}
+}
+
+func TestWeChat_TextMessage(t *testing.T) {
+	if err := wechat.TextMessage("oQS1L03dUoxIB9ZlD7eilgbLagTM", "hellow"); err != nil {
 		t.Fatal(err)
 	}
 }
