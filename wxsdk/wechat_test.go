@@ -154,7 +154,7 @@ func TestWeChat_ListKFAccount(t *testing.T) {
 }
 
 func TestWeChat_TextMessage(t *testing.T) {
-	if err := wechat.TextMessage("oQS1L03dUoxIB9ZlD7eilgbLagTM", "hellow"); err != nil {
+	if err := wechat.TextMessage("oQS1L03dUoxIB9ZlD7eilgbLagTM", "hello"); err != nil {
 		t.Fatal(err)
 	}
 }
