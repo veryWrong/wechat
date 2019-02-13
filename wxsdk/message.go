@@ -84,62 +84,29 @@ func (w *WeChat) VoiceMessage(openId, mediaId string) error {
 }
 
 // VideoMessage 视频消息
-func (w *WeChat) VideoMessage(openId, mediaId, thumbMediaId, title, description string) error {
+func (w *WeChat) VideoMessage(openId string, videoParam VideoMsgParam) error {
 	message := struct {
-		ToUser  string `json:"touser"`
-		MsgType string `json:"msgtype"`
-		Video   struct {
-			MediaId      string `json:"media_id"`
-			ThumbMediaId string `json:"thumb_media_id"`
-			Title        string `json:"title"`
-			Description  string `json:"description"`
-		} `json:"video"`
+		ToUser  string        `json:"touser"`
+		MsgType string        `json:"msgtype"`
+		Video   VideoMsgParam `json:"video"`
 	}{
 		ToUser:  openId,
 		MsgType: "video",
-		Video: struct {
-			MediaId      string `json:"media_id"`
-			ThumbMediaId string `json:"thumb_media_id"`
-			Title        string `json:"title"`
-			Description  string `json:"description"`
-		}{
-			MediaId:      mediaId,
-			ThumbMediaId: thumbMediaId,
-			Title:        title,
-			Description:  description,
-		},
+		Video:   videoParam,
 	}
 	return w.sendMessage(message)
 }
 
 // MusicMessage 音乐消息
-func (w *WeChat) MusicMessage(openId, title, description, musicUrl, hqMusicUrl, thumbMediaId string) error {
+func (w *WeChat) MusicMessage(openId string, musicParam MusicMsgParam) error {
 	message := struct {
-		ToUser  string `json:"touser"`
-		MsgType string `json:"msgtype"`
-		Music   struct {
-			Title        string `json:"title"`
-			Description  string `json:"description"`
-			MusicUrl     string `json:"musicurl"`
-			HqMusicUrl   string `json:"hqmusicurl"`
-			ThumbMediaId string `json:"thumb_media_id"`
-		} `json:"music"`
+		ToUser  string        `json:"touser"`
+		MsgType string        `json:"msgtype"`
+		Music   MusicMsgParam `json:"music"`
 	}{
 		ToUser:  openId,
 		MsgType: "music",
-		Music: struct {
-			Title        string `json:"title"`
-			Description  string `json:"description"`
-			MusicUrl     string `json:"musicurl"`
-			HqMusicUrl   string `json:"hqmusicurl"`
-			ThumbMediaId string `json:"thumb_media_id"`
-		}{
-			Title:        title,
-			Description:  description,
-			MusicUrl:     musicUrl,
-			HqMusicUrl:   hqMusicUrl,
-			ThumbMediaId: thumbMediaId,
-		},
+		Music:   musicParam,
 	}
 	return w.sendMessage(message)
 }

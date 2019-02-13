@@ -18,7 +18,7 @@ type CheckNetworkResp struct {
 		FromOperator string `json:"from_operator"`
 		PackageLoss  string `json:"package_loss"`
 		Time         string `json:"time"`
-	}
+	} `json:"ping"`
 }
 
 // MenuQueryResp 查询自定义菜单返回

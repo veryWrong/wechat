@@ -33,3 +33,20 @@ type ConditionalMenuCreateParam struct {
 	Button    []MenuButton `json:"button"`
 	MatchRule MatchRule    `json:"matchrule"`
 }
+
+// VideoMsgParam 视频消息参数
+type VideoMsgParam struct {
+	MediaId      string `json:"media_id"`
+	ThumbMediaId string `json:"thumb_media_id"`
+	Title        string `json:"title"`
+	Description  string `json:"description"`
+}
+
+// MusicMsgParam 音乐消息参数
+type MusicMsgParam struct {
+	Title        string `json:"title"`
+	Description  string `json:"description"`
+	MusicUrl     string `json:"musicurl"`
+	HqMusicUrl   string `json:"hqmusicurl"`
+	ThumbMediaId string `json:"thumb_media_id"`
+}
