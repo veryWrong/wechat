@@ -3,7 +3,6 @@ package wxsdk
 import (
 	"errors"
 	"fmt"
-	"log"
 )
 
 // AddKFAccount 添加客服帐号
@@ -96,9 +95,23 @@ func (w *WeChat) ListKFAccount() (*ListKFAccountResp, error) {
 	url := fmt.Sprintf(listKFAccount, accessToken)
 	result := &ListKFAccountResp{}
 	_, err = w.net.get(url).end(nil, result)
-	log.Println(err)
 	if err != nil {
 		return nil, HttpRequestErr
 	}
 	return result, nil
+}
+
+// CustomTyping 客服输入状态
+func (w *WeChat) CustomTyping(openId string) error {
+	accessToken, err := w.GetAccessToken()
+	if err != nil {
+		return err
+	}
+	url := fmt.Sprintf(customTyping, accessToken)
+	result := &ListKFAccountResp{}
+	_, err = w.net.get(url).end(nil, result)
+	if err != nil {
+		return HttpRequestErr
+	}
+	return nil
 }

@@ -29,6 +29,12 @@ const (
 	deleteKFAccount = "https://api.weixin.qq.com/customservice/kfaccount/del?access_token=%s"
 	// 列出所有客服账号
 	listKFAccount = "https://api.weixin.qq.com/cgi-bin/customservice/getkflist?access_token=%s"
+	// 客服输入状态
+	customTyping = "https://api.weixin.qq.com/cgi-bin/message/custom/typing?access_token=%s"
 	// 发送消息
 	sendMessage = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=%s"
+	// 上传图文消息素材
+	uploadNews = "https://api.weixin.qq.com/cgi-bin/media/uploadnews?access_token=%s"
+	// 根据标签进行群发
+	massMessage = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=%s"
 )

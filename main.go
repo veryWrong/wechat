@@ -32,10 +32,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 	log.Println(signature)
 	timestamp := strings.Join(r.Form["timestamp"], "")
 	nonce := strings.Join(r.Form["nonce"], "")
+	log.Println(timestamp, nonce)
 	str := nonce + timestamp + token
 	h := sha1.New()
 	h.Write([]byte(str))
-	hashed := hex.EncodeToString(h.Sum(nil))
+	hashed := hex.EncodeToString(h.Sum([]byte("")))
 	log.Println(hashed)
 	if hashed == signature {
 		fmt.Fprintf(w, strings.Join(r.Form["echostr"], ""))

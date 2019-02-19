@@ -85,3 +85,10 @@ type ListKFAccountResp struct {
 		KFHeadImgUrl string `json:"kf_headimgurl"`
 	} `json:"kf_list"`
 }
+
+// UploadNewsResp 上传图文消息素材返回
+type UploadNewsResp struct {
+	Type      string `json:"type"`
+	MediaId   string `json:"media_id"`
+	CreatedAt int64  `json:"created_at"`
+}
